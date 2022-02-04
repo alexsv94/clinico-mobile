@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,600;1,600&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Round");
+@import url('../../themeColors.css');
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Source Serif 4", sans-serif;
+	background-color: var(--contentColor);
+	transition: background-color 0.1s ease-in-out;
+	color: var(--textColor)
+}
+
+span {
+	background-color: transparent;
+}
+
+.navbar {
+	min-height: 65px;
+	box-shadow: 0 5px 5px var(--shadowColor);
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.navMenu {
+	height: 65px;
+	width: 65px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.navMenu__container {
+	position: absolute;
+	box-shadow: 0 5px 5px var(--shadowColor);
+	z-index: 10;
+	top: 100%;
+	right: 0;
+	width: max-content;
+	background-color: var(--navMenuColor);
+	border-radius: 0.3rem;
+	border-top-right-radius: 0;
+	opacity: 1;
+	transform: translate(50%, -50%) scale(0, 0);
+	overflow: hidden;
+	pointer-events: none;
+	transition: all 0.1s ease-in-out;
+}
+
+.navbar__menuActive {
+	opacity: 1;
+	pointer-events: all;
+	transform: translate(0) scale(1, 1);
+}
+
+.navbar__menubutton-active {
+	background-color: var(--navMenuColor);
+	transition: background-color 0.1s ease-in-out;
+}
+
+.menuItem {
+	padding: 10px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	background-color: transparent;
+	transition: background-color 0.1s ease-in-out;
+}
+
+.menuItem:active {
+	background-color: var(--navMenuItemActiveColor);
+}
+
+.menu__substrate {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
+	background-color: transparent;
+}
+
+.swithchThemeButton {
+	color: var(--accentColor);
+	font-size: 46px;
+}
+
+.navTitle {
+	display: flex;
+	font-weight: 900;
+	font-size: 24px;
+	flex-grow: 1;
+	font-style: italic;
+	justify-content: start;
+	align-items: center;
+	padding-left: 15px;
+	color: var(--textColor);
+	line-height: 20px;
+}

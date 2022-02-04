@@ -1,0 +1,25 @@
+html[data-theme='light'] {
+	--contentColor: #ffffff;
+	--textColor: #000000;
+	--infoIconColor: #c4c8cc;
+	--iconColor: #aaaeb3;
+	--signatureColor: #909499;
+	--labelColor: #76787a;
+	--accentColor: #528bcc;
+	--shadowColor: rgba(0,0,0,0.15);
+	--navMenuColor: #d1d1d1;
+	--navMenuItemActiveColor: #a1a1a1;
+}
+
+html[data-theme='dark'] {
+	--contentColor: #19191a;
+	--textColor: #e1e3e6;
+	--infoIconColor: #454647;
+	--iconColor: #5d5f61;
+	--signatureColor: #76787a;
+	--labelColor: #909499;
+	--accentColor: #71aaeb;
+	--shadowColor: rgba(255, 255, 255, 0.15);
+	--navMenuColor: #202020;
+	--navMenuItemActiveColor: #3f3f3f;
+}
