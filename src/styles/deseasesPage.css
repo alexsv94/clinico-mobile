@@ -1,19 +1,23 @@
 @import url('./global.css');
 
-.desease-card {
+.item-card {
 	display: flex;
-	border-radius: 10px;
-	margin-bottom: 5px;
+	border-radius: 5px;
+	margin-bottom: 2px;
 	padding: 5px;
 	padding-left: 25px;
-	font-size: 20px;
-	background-color: #39ad69;
-	color: #efedc0;
-	line-height: 60px;
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
+	font-size: 16px;
+	background-color: var(--itemCardColor);
+	color: var(--textColor);
+	line-height: 40px;
+	border: 1px solid var(--shadowColor);
 	cursor: pointer;
 }
 
 .search-selection {
 	color: var(--accentColor);
+}
+
+.deseases-wrapper {
+	overflow-y: scroll;
 }

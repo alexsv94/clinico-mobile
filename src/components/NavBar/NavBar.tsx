@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Toggle from '../ui/Toggle/Toggle';
 import './NavBar.css';
 
 interface NavBarProps {
@@ -9,8 +10,10 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 	const navigationRoute = useNavigate();
+	const location = useLocation();
 
 	const [menuShow, setMenuShow] = useState<boolean>(false);
+	const [toggleChecked, setToggleChecked] = useState<boolean>(theme === 'dark');
 
 	let menuButtonClassNames = ['navMenu']
 	let menuContainerClassNames = ['navMenu__container']
@@ -20,20 +23,34 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 		menuContainerClassNames.push('navbar__menuActive')
 	}
 
+	function setLightMode(): void {
+		setTheme('light');
+		setToggleChecked(false);
+	}
+
+	function setDarkMode(): void {
+		setTheme('dark');
+		setToggleChecked(true);
+	}
+
 	return (
 		<div className="navbar">
+			{location.pathname !== '/'
+				? 	<div className='navMenu' onClick={() => navigationRoute(-1)}>
+						<span className='material-icons-round' style={{ fontSize: 46 }}>arrow_back</span>
+					</div>
+				: 	null
+			}
 			<div className='navTitle'>
-				<span>Главная страница</span>
-			</div>
-			<div className='navMenu' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-				{theme === 'light'
-					? <span className="material-icons swithchThemeButton">dark_mode</span>
-					: <span className="material-icons swithchThemeButton">light_mode</span>
-				}
+				<span id='navbar-title'>Главная</span>
 			</div>
 			<div className={menuButtonClassNames.join(' ')} onClick={() => setMenuShow(!menuShow)}>
 				<span className="material-icons-round" style={{ fontSize: 46 }}>menu</span>
 				<div className={menuContainerClassNames.join(' ')}>
+					<div className="menuItem" style={{ justifyContent: 'space-between' }}>
+						<span style={{ display: 'block', marginLeft: '7px' }}>Тема</span>
+						<Toggle checked={toggleChecked} onChecked={setDarkMode} onUnchecked={setLightMode} />
+					</div>
 					<div className="menuItem" onClick={() => navigationRoute("/profile")}>
 						<span className="material-icons-round" style={{ marginRight: 10, fontSize: 36 }}>person</span>
 						<span>Профиль</span>

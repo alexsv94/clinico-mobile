@@ -1,8 +1,11 @@
 import React from 'react';
+import { setTitle } from '../utils/functions';
 
 const FavoritesPage = () => {
+	setTitle('Избранное');
+	
 	return (
-		<div>
+		<div className='page-container'>
 			избранное
 		</div>
 	);

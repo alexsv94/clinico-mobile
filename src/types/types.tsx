@@ -1,6 +1,7 @@
 import DeseasesStore from "../store/deseasesStore";
 
 export interface IAppContext {
+	pageTitle: string;
 	deseases: DeseasesStore;
 }
 

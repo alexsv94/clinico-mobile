@@ -1,8 +1,11 @@
 import React from 'react';
+import { setTitle } from '../utils/functions';
 
 const MedicationsPage = () => {
+	setTitle('Лек. препараты');
+	
 	return (
-		<div>
+		<div className='page-container'>
 			лекарственные препараты
 		</div>
 	);

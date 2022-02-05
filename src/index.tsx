@@ -5,6 +5,7 @@ import DeseasesStore from './store/deseasesStore';
 import { IAppContext } from './types/types';
 
 const appContext: IAppContext = {
+	pageTitle: '',
 	deseases: new DeseasesStore()
 }
 
