@@ -33,11 +33,13 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 		setToggleChecked(true);
 	}
 
+	const iconsFontSize = 36;
+
 	return (
 		<div className="navbar">
 			{location.pathname !== '/'
 				? 	<div className='navMenu' onClick={() => navigationRoute(-1)}>
-						<span className='material-icons-round' style={{ fontSize: 46 }}>arrow_back</span>
+						<span className='material-icons-round' style={{ fontSize: 40 }}>arrow_back</span>
 					</div>
 				: 	null
 			}
@@ -45,26 +47,26 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 				<span id='navbar-title'>Главная</span>
 			</div>
 			<div className={menuButtonClassNames.join(' ')} onClick={() => setMenuShow(!menuShow)}>
-				<span className="material-icons-round" style={{ fontSize: 46 }}>menu</span>
+				<span className="material-icons-round" style={{ fontSize: 40 }}>menu</span>
 				<div className={menuContainerClassNames.join(' ')}>
 					<div className="menuItem" style={{ justifyContent: 'space-between' }}>
 						<span style={{ display: 'block', marginLeft: '7px' }}>Тема</span>
 						<Toggle checked={toggleChecked} onChecked={setDarkMode} onUnchecked={setLightMode} />
 					</div>
 					<div className="menuItem" onClick={() => navigationRoute("/profile")}>
-						<span className="material-icons-round" style={{ marginRight: 10, fontSize: 36 }}>person</span>
+						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>person</span>
 						<span>Профиль</span>
 					</div>
 					<div className="menuItem" onClick={() => navigationRoute("/favorites")}>
-						<span className="material-icons-round" style={{ marginRight: 10, fontSize: 36 }}>star</span>
+						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>grade</span>
 						<span>Избранное</span>
 					</div>
 					<div className="menuItem" onClick={() => navigationRoute("/deseases")}>
-						<span className="material-icons-round" style={{ marginRight: 10, fontSize: 36 }}>coronavirus</span>
+						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>coronavirus</span>
 						<span>Заболевания</span>
 					</div>
 					<div className="menuItem" onClick={() => navigationRoute("/medications")}>
-						<span className="material-icons-round" style={{ marginRight: 10, fontSize: 36 }}>medication</span>
+						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>medication</span>
 						<span>Лек. препараты</span>
 					</div>
 				</div>

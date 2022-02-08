@@ -1,8 +1,11 @@
 @import url('../../../styles/global.css');
 
 .toggle {
-	height: 40px;
-	width: 80px;
+	--toggle-width: 60px;
+	--toggle-height: 28px;
+	box-sizing: content-box;
+	height: var(--toggle-height);
+	width: var(--toggle-width);
 	border-radius: 40px;
 	background-color: rgb(80, 77, 77);
 	position: relative;
@@ -10,8 +13,8 @@
 }
 
 .toggle__handle {
-	width: 38px;
-	height: 38px;
+	width: calc(var(--toggle-height) - 2px);
+	height: calc(var(--toggle-height) - 2px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -27,7 +30,7 @@
 }
 
 .handle_checked {
-	transform: translateX(40px);
+	transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
 }
 
 .toggle__handle-image {
