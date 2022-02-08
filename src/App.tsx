@@ -2,11 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import { useTheme } from './hooks/useTheme';
-// import DeseasesPage from './pages/DeseasesPage';
-// import FavoritesPage from './pages/FavoritesPage';
-// import MainPage from './pages/MainPage';
-// import MedicationsPage from './pages/MedicationsPage';
-// import ProfilePage from './pages/ProfilePage';
 
 const DeseasesPage = lazy(() => import('./pages/DeseasesPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
