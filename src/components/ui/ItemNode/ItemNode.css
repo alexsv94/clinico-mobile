@@ -1,0 +1,12 @@
+@import url('../../../styles/global.css');
+
+.item-node {
+	padding: 5px;
+	margin: 0 5px 5px 0;
+	background-color: var(--labelColor);
+	border-radius: 5px;
+}
+
+.item-node span {	
+	color: var(--navMenuColor);
+}

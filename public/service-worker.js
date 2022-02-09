@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 const staticCacheName = 's-app-v1'
 const dynamicCacheName = 'd-app-v1'
 
@@ -45,6 +46,8 @@ self.addEventListener('fetch', event => {
 	const { request } = event
 
 	const url = new URL(request.url)
+
+	if (url.origin.includes('chrome-extension')) return;
 
 	if (url.origin === location.origin) {
 		event.respondWith(cacheFirst(request))

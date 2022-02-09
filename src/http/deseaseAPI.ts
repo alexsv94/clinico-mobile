@@ -67,7 +67,7 @@ export const fetchDeseases = async () => {
 	return data;
 }
 
-export const fetchDeseaseById = async (id: number) => {
+export const fetchDeseaseById = async (id: string) => {
 	const { data } = await $host.get<IDesease>('api/deseases/' + id)
 	return data;
 }

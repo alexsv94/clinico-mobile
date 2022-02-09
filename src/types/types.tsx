@@ -1,8 +1,12 @@
 import DeseasesStore from "../store/deseasesStore";
+import MedicationsStore from "../store/medicationsStore";
+import UserStore from "../store/userStore";
 
 export interface IAppContext {
 	pageTitle: string;
 	deseases: DeseasesStore;
+	medications: MedicationsStore;
+	user: UserStore;
 }
 
 export interface IUser {

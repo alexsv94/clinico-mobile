@@ -3,10 +3,10 @@ import { observer } from 'mobx-react-lite'
 import { Context } from '..';
 import { fetchDeseases } from '../http/deseaseAPI';
 import { useNavigate } from 'react-router-dom';
-import { DESEASES_ROUTE } from '../utils/consts';
 import { setTitle, splitText } from '../utils/functions';
 import '../styles/deseasesPage.css'
 import FilterInput from '../components/ui/FilterInput/FilterInput';
+import { AppRoutes } from '../utils/enums';
 
 const BaseComponent = () => {
 	const { deseases } = useContext(Context);
@@ -34,7 +34,7 @@ const BaseComponent = () => {
 						return <div
 							key={desease.name}
 							className="item-card"
-							onClick={() => navigationRoute(DESEASES_ROUTE + '/' + desease.id)}
+							onClick={() => navigationRoute(AppRoutes.DESEASES_ROUTE + '/' + desease.id)}
 						>
 							{textBefore}<span className="search-selection">{match}</span>{textAfter}
 						</div>

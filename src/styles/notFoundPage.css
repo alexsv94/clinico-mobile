@@ -1,0 +1,29 @@
+.not-found__wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+}
+
+.error-icon {
+	font-size: 128px; 
+	margin-right: 5px;
+	margin-top: 30px;
+	animation: icon-animation 5s linear;
+	animation-iteration-count: infinite;
+	user-select: none;
+}
+
+@keyframes icon-animation {
+	0% {		
+		transform: scale(1, 1);
+	}
+
+	50% {
+		transform: scale(1, 1) rotateY(180deg);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
+}
