@@ -89,7 +89,7 @@ span {
 
 .navTitle {
 	display: flex;
-	font-weight: 900;
+	font-weight: 600;
 	font-size: 20px;
 	flex-grow: 1;
 	font-style: italic;

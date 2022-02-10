@@ -1,0 +1,20 @@
+@import url('../../../styles/global.css');
+
+.add-favorites-title {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px;
+	margin-bottom: 5px;
+	background-color: var(--itemCardColor);
+	border: 1px solid var(--shadowColor);
+	border-radius: 5px;
+}
+
+.add-favorites-title div {
+	background-color: transparent;
+	font-size: 18px;
+}
+
+.add-favorites-title div span {
+	font-size: 36px;
+}

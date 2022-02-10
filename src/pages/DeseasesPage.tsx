@@ -7,10 +7,12 @@ import { setTitle, splitText } from '../utils/functions';
 import '../styles/deseasesPage.css'
 import FilterInput from '../components/ui/FilterInput/FilterInput';
 import { AppRoutes } from '../utils/enums';
+import Loader from '../components/ui/Loader/Loader';
 
 const BaseComponent = () => {
 	const { deseases } = useContext(Context);
 	const [searchValue, setSearchValue] = useState<string>('')
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const navigationRoute = useNavigate();
 
 	setTitle('Заболевания');
@@ -18,8 +20,14 @@ const BaseComponent = () => {
 	useEffect(() => {
 		fetchDeseases().then(data => {
 			deseases.setDeseases(data);
-		})
+		}).finally(() => setIsLoading(false))
 	}, [deseases])
+
+	if (isLoading) return (
+		<div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
+			<Loader />
+		</div>
+	)
 
 	return (
 		<div className='page-container'>
