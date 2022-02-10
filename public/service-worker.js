@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
-const staticCacheName = 's-app-v1'
-const dynamicCacheName = 'd-app-v1'
+const staticCacheName = 's-app-v2'
+const dynamicCacheName = 'd-app-v2'
 
 const assetUrls = [
 	'index.html',
@@ -62,6 +62,8 @@ async function cacheFirst(request) {
 }
 
 async function networkFirst(request) {	
+	if (request.method !== 'GET') return await fetch(request);
+	
 	const cache = await caches.open(dynamicCacheName);
 
 	try {
@@ -69,7 +71,6 @@ async function networkFirst(request) {
 		cache.put(request, response.clone());
 		return response;
 	} catch (e) {
-		console.log(e);
 		const cached = await cache.match(request);
 		return cached || await caches.match('./offline.html');
 	}

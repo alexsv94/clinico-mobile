@@ -1,9 +1,8 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter} from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import NavBar from './components/NavBar/NavBar';
 import { useTheme } from './hooks/useTheme';
-import { AppRoutes } from './utils/enums';
 
 function App() {
 	const { theme, setTheme } = useTheme(localStorage.getItem('colorTheme') || 'light')

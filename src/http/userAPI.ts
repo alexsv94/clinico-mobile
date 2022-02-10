@@ -7,20 +7,20 @@ export const registration = async (email: string, password: string, firstname: s
 	const { data } = await $host.post('api/user/registration',
 		{ email, password, firstname, lastname, role: 'USER' })
 	localStorage.setItem('auth_token', data.token)
-	return jwt_decode(data.token);
+	return jwt_decode<IUser>(data.token);
 }
 
 export const login = async (email: string, password: string) => {
 	const { data } = await $host.post('api/user/login',
 		{ email, password })
 	localStorage.setItem('auth_token', data.token)
-	return jwt_decode(data.token);
+	return jwt_decode<IUser>(data.token);
 }
 
 export const check = async () => {
 	const { data } = await $authHost.get('api/user/auth')
 	localStorage.setItem('auth_token', data.token)
-	return jwt_decode(data.token);
+	return jwt_decode<IUser>(data.token);
 }
 
 export const logout = () => {

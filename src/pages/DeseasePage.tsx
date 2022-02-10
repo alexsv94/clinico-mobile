@@ -3,14 +3,16 @@ import { useParams } from 'react-router-dom';
 import Card from '../components/ui/Card/Card';
 import ItemNode from '../components/ui/ItemNode/ItemNode';
 import Loader from '../components/ui/Loader/Loader';
-import AddFavoritesTitle from '../components/ui/StarTitle/AddFavoritesTitle';
+import AddFavoritesTitle from '../components/ui/AddFavoritesTitle/AddFavoritesTitle';
 import { fetchDeseaseById } from '../http/deseaseAPI';
 import { IDesease } from '../types/types';
 import { setTitle } from '../utils/functions';
+import { addFavoriteDesease, removeFavoriteDesease } from '../http/favoritesApi';
 
 const DeseasePage = () => {
 	const { id } = useParams();
 	const [desease, setDesease] = useState<IDesease | null>(null)
+	const [isFavorite, setIsFavorite] = useState<boolean>(false)
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	if (desease)
@@ -24,6 +26,14 @@ const DeseasePage = () => {
 		}
 	}, [id])
 
+	async function switchFavorite() {
+		if (isFavorite) {
+			if (desease) removeFavoriteDesease(desease.id).then(() => setIsFavorite(false))
+		} else {
+			if (desease) addFavoriteDesease(desease.id).then(() => setIsFavorite(true))
+		}
+	}
+
 	if (isLoading) return (
 		<div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
 			<Loader />
@@ -32,7 +42,7 @@ const DeseasePage = () => {
 
 	return (
 		<div className='page-container'>
-			<AddFavoritesTitle title={desease?.name} isFavorite={false} />
+			<AddFavoritesTitle title={desease?.name} isFavorite={isFavorite} onChange={switchFavorite}/>
 			<Card title='Симптомы'>
 				{desease?.symptoms.map(symptom =>
 					<ItemNode key={symptom.name}>
