@@ -13,10 +13,10 @@ export const splitText = (text: string, value: string): string[] => {
 	}
 }
 
-export function setTitle(title: string) {
+export function setTitle(title: string | undefined) {
 	const navbarTitle = document.querySelector<HTMLSpanElement>('#navbar-title');
 	
-	if (navbarTitle){
+	if (navbarTitle && title) {
 		if (title.length > 19)
 			title = title.substring(0, 19) + '...';
 		navbarTitle.innerText = title;

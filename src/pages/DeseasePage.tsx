@@ -7,42 +7,39 @@ import AddFavoritesTitle from '../components/ui/AddFavoritesTitle/AddFavoritesTi
 import { fetchDeseaseById } from '../http/deseaseAPI';
 import { IDesease } from '../types/types';
 import { setTitle } from '../utils/functions';
-import { addFavoriteDesease, removeFavoriteDesease } from '../http/favoritesApi';
+import { useFavorites } from '../hooks/useFavorites';
+import { checkFavoriteDesease } from '../http/favoritesApi';
 
 const DeseasePage = () => {
 	const { id } = useParams();
-	const [desease, setDesease] = useState<IDesease | null>(null)
-	const [isFavorite, setIsFavorite] = useState<boolean>(false)
+	const [desease, setDesease] = useState<IDesease>()
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	if (desease)
-		setTitle(desease?.name)
+	const { isFavorite, setIsFavorite, switchState } = useFavorites<IDesease | undefined>(desease);
+
+	setTitle(desease?.name)	
 
 	useEffect(() => {
 		if (id) {
-			fetchDeseaseById(id).then(data => {
-				setDesease(data);
-			}).finally(() => setIsLoading(false))
+			fetchDeseaseById(id)
+				.then(data => {
+					setDesease(data);
+				})
+				.then(() => checkFavoriteDesease(id))
+				.then(result => setIsFavorite(result))
+				.finally(() => setIsLoading(false))
 		}
 	}, [id])
 
-	async function switchFavorite() {
-		if (isFavorite) {
-			if (desease) removeFavoriteDesease(desease.id).then(() => setIsFavorite(false))
-		} else {
-			if (desease) addFavoriteDesease(desease.id).then(() => setIsFavorite(true))
-		}
-	}
-
 	if (isLoading) return (
-		<div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
+		<div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
 			<Loader />
 		</div>
 	)
 
 	return (
 		<div className='page-container'>
-			<AddFavoritesTitle title={desease?.name} isFavorite={isFavorite} onChange={switchFavorite}/>
+			<AddFavoritesTitle title={desease?.name} isFavorite={isFavorite} onChange={switchState} />
 			<Card title='Симптомы'>
 				{desease?.symptoms.map(symptom =>
 					<ItemNode key={symptom.name}>

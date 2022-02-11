@@ -3,8 +3,8 @@ import './AddFavoritesTitle.css'
 
 interface AddFavoritesTitleProps {
 	title: string | undefined;	
-	isFavorite: boolean;
-	onChange?(value: boolean): void;
+	isFavorite: boolean | undefined;
+	onChange?(value: boolean): void | undefined;
 }
 
 const AddFavoritesTitle: FC<AddFavoritesTitleProps> = ({ title, onChange, isFavorite }) => {

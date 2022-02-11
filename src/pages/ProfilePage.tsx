@@ -1,34 +1,24 @@
-import React, { useContext, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useContext } from 'react';
 import { Context } from '..';
-import { login } from '../http/userAPI';
+import LoginForm from '../components/ui/LoginForm/LoginForm';
 import { setTitle } from '../utils/functions';
 
-const ProfilePage = () => {
+const BaseComponent = () => {
 	setTitle('Профиль');
 
 	const { user } = useContext(Context);
 
-	const [email, setEmail] = useState<string>('')
-	const [password, setPassword] = useState<string>('')
-
-	const signIn = async () => {
-		try {
-			let decodedUser = await login(email, password);
-
-			user.setUser(decodedUser);
-			user.setIsAuth(true);
-		} catch (e) {
-			alert(e);
-		}
-	}
-
 	return (
 		<div className='page-container'>
-			<input value={email} onChange={(e) => setEmail(e.target.value)}></input>
-			<input value={password} onChange={(e) => setPassword(e.target.value)}></input>
-			<button onClick={signIn}>Войти</button>
+			{user.isAuth
+				? ''
+				: <LoginForm />
+			}
 		</div>
 	);
 };
+
+const ProfilePage = observer(BaseComponent);
 
 export default ProfilePage;

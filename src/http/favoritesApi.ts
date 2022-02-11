@@ -17,6 +17,11 @@ export const removeFavoriteDesease = async (deseaseId: number) => {
 	return response.data.message === 'Успешно';
 }
 
+export const checkFavoriteDesease = async (deseaseId: string | undefined) => {
+	const response = await $authHost.get<boolean>('api/favorites/deseases/check/' + deseaseId);
+	return response.data;
+}
+
 
 //MEDICATIONS
 
@@ -32,4 +37,9 @@ export const addFavoriteMedication = async (medicationId: number) => {
 export const removeFavoriteMedication = async (medicationId: number) => {
 	const response = await $authHost.delete<IInfoResponse>('api/favorites/medications/' + medicationId);
 	return response.data.message === 'Успешно';
+}
+
+export const checkFavoriteMedication = async (medicationId: string | undefined) => {
+	const response = await $authHost.get<boolean>('api/favorites/medications/check/' + medicationId);
+	return response.data;
 }

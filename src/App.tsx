@@ -1,11 +1,24 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter} from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import React, { Suspense, useContext, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Context } from '.';
 import AppRouter from './components/AppRouter';
 import NavBar from './components/NavBar/NavBar';
 import { useTheme } from './hooks/useTheme';
+import { check } from './http/userAPI';
 
-function App() {
+const App = observer(() => {
 	const { theme, setTheme } = useTheme(localStorage.getItem('colorTheme') || 'light')
+	const { user } = useContext(Context);
+
+	useEffect(() => {
+		check()
+			.then(data => {
+				user.setUser(data)
+				user.setIsAuth(true)
+			})
+			.catch(() => {})
+	}, [user])
 
 	return (
 		<BrowserRouter>
@@ -15,6 +28,6 @@ function App() {
 			</Suspense>
 		</BrowserRouter>
 	);
-}
+})
 
 export default App;

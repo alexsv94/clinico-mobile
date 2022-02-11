@@ -75,7 +75,7 @@ export interface IDosageForm {
 	medicationId?: string;
 }
 
-export interface IFavorite {
+export interface IFavoriteItem {
 	id: number;
 	createdAt?: string;
 	updatedAt?: string;
@@ -84,4 +84,8 @@ export interface IFavorite {
 
 export interface IInfoResponse {
 	message: string;
+}
+
+export interface IAuthResponse {
+	token: string;
 }
