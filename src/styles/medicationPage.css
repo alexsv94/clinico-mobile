@@ -1,0 +1,41 @@
+@import url('./global.css');
+
+.parsed-container {
+	padding: 8px;
+}
+
+.scroll-wrapper {
+	overflow-y: scroll;
+	margin-bottom: 8px;
+}
+
+.parsed-container, ul, li, p, table, tbody, tr, th, td, strong {
+	background-color: transparent;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 8px;
+}
+
+tr, th, td {
+	border: 0.1em solid var(--textColor);
+}
+
+td, th {
+	padding: 5px;
+	font-size: 14px;
+}
+
+th {
+	font-weight: 600;
+}
+
+li {
+	margin-left: 10px;
+	margin-bottom: 8px;
+}
+
+p, strong {
+	margin-bottom: 8px;
+}

@@ -1,0 +1,18 @@
+@import url('../../../styles/global.css');
+
+.selector-button {
+	padding: 5px;	
+	width: 100%;
+	margin-bottom: 5px;
+	background-color: var(--infoIconColor);
+	border: 1px solid var(--shadowColor);
+	border-radius: 5px;
+	font-size: 16px;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.current {
+	background-color: var(--labelColor);
+	box-shadow: 0 0 5px var(--shadowColor);
+	font-weight: 600;
+}

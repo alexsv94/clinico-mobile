@@ -61,6 +61,7 @@ export interface IMedication {
 	img?: string;
 	indications: string;
 	contrindications: string;
+	dosage_forms: IDosageForm[]
 	createdAt?: string;
 	updatedAt?: string;
 }
@@ -72,7 +73,7 @@ export interface IDosageForm {
 	application_mode: string;
 	createdAt?: string;
 	updatedAt?: string;
-	medicationId?: string;
+	medicationId: string;
 }
 
 export interface IFavoriteItem {

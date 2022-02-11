@@ -1,5 +1,7 @@
-import React, { FC, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { FC, useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Context } from '../..';
 import Toggle from '../ui/Toggle/Toggle';
 import './NavBar.css';
 
@@ -8,12 +10,14 @@ interface NavBarProps {
 	setTheme(theme: string): void;
 }
 
-const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
+const NavBar: FC<NavBarProps> = observer(({ theme, setTheme }) => {
 	const navigationRoute = useNavigate();
 	const location = useLocation();
 
 	const [menuShow, setMenuShow] = useState<boolean>(false);
 	const [toggleChecked, setToggleChecked] = useState<boolean>(theme === 'dark');
+
+	const { user } = useContext(Context);
 
 	let menuButtonClassNames = ['navMenu']
 	let menuContainerClassNames = ['navMenu__container']
@@ -38,10 +42,10 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 	return (
 		<div className="navbar">
 			{location.pathname !== '/'
-				? 	<div className='navMenu' onClick={() => navigationRoute(-1)}>
-						<span className='material-icons-round' style={{ fontSize: 40 }}>arrow_back</span>
-					</div>
-				: 	null
+				? <div className='navMenu' onClick={() => navigationRoute(-1)}>
+					<span className='material-icons-round' style={{ fontSize: 40 }}>arrow_back</span>
+				</div>
+				: null
 			}
 			<div className='navTitle'>
 				<span id='navbar-title'>Главная</span>
@@ -57,10 +61,15 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>person</span>
 						<span>Профиль</span>
 					</div>
-					<div className="menuItem" onClick={() => navigationRoute("/favorites")}>
-						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>grade</span>
-						<span>Избранное</span>
-					</div>
+					
+					{user.isAuth
+						? <div className="menuItem" onClick={() => navigationRoute("/favorites")}>
+							<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>grade</span>
+							<span>Избранное</span>
+						</div>
+						: null
+					}
+
 					<div className="menuItem" onClick={() => navigationRoute("/deseases")}>
 						<span className="material-icons-outlined" style={{ marginRight: 10, fontSize: iconsFontSize }}>coronavirus</span>
 						<span>Заболевания</span>
@@ -78,6 +87,6 @@ const NavBar: FC<NavBarProps> = ({ theme, setTheme }) => {
 			}
 		</div>
 	);
-};
+});
 
 export default NavBar;

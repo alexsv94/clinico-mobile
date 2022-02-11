@@ -1,10 +1,11 @@
 import { $authHost } from './index';
-import { IInfoResponse } from '../types/types'
+import { IDesease, IInfoResponse, IMedication } from '../types/types'
 
 //DESEASES
 
 export const fetchFavoriteDeseases = async () => {
-	await $authHost.get('api/favorites/deseases')
+	const response = await $authHost.get<IDesease[]>('api/favorites/deseases')
+	return response.data;
 }
 
 export const addFavoriteDesease = async (deseaseId: number) => {	
@@ -26,7 +27,8 @@ export const checkFavoriteDesease = async (deseaseId: string | undefined) => {
 //MEDICATIONS
 
 export const fetchFavoriteMedications = async () => {
-	await $authHost.get('api/favorites/medications')
+	const response = await $authHost.get<IMedication[]>('api/favorites/medications')
+	return response.data;
 }
 
 export const addFavoriteMedication = async (medicationId: number) => {

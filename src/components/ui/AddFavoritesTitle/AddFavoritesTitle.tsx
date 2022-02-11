@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
+import { Context } from '../../..';
 import './AddFavoritesTitle.css'
 
 interface AddFavoritesTitleProps {
@@ -8,6 +9,8 @@ interface AddFavoritesTitleProps {
 }
 
 const AddFavoritesTitle: FC<AddFavoritesTitleProps> = ({ title, onChange, isFavorite }) => {
+	const { user } = useContext(Context);
+	
 	function switchIsFavoriteHandler() {
 		if (onChange) onChange(!isFavorite);
 	}
@@ -15,7 +18,7 @@ const AddFavoritesTitle: FC<AddFavoritesTitleProps> = ({ title, onChange, isFavo
 	return (
 		<div className='add-favorites-title'>
 			<div>{title}</div>
-			<div onClick={switchIsFavoriteHandler}>
+			<div onClick={switchIsFavoriteHandler} style={{display: user.isAuth ? 'block' : 'none'}}>
 				<span
 					className='material-icons-round'
 					style={isFavorite ? { color: 'orange' } : {}}

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Context } from '../../..';
-import { RequestError } from '../../../http/error';
-import { login, registration } from '../../../http/userAPI';
-import ErrorModal from '../ErrorModal/ErrorModal';
+import { Context } from '../..';
+import { RequestError } from '../../http/error';
+import { login, registration } from '../../http/userAPI';
+import ErrorModal from '../ui/ErrorModal/ErrorModal';
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -14,7 +14,7 @@ const LoginForm = () => {
 	const [lastName, setLastName] = useState<string>('')
 
 	
-	const [isLoginMode, setIsLoginMode] = useState<boolean>(false);
+	const [isLoginMode, setIsLoginMode] = useState<boolean>(true);
 
 	const [errorMessage, setErrorMessage] = useState<string>('');
 	const [modalShow, setModalShow] = useState<boolean>(false);
@@ -53,12 +53,13 @@ const LoginForm = () => {
 				}
 
 			</div>
-			<div className='input-container'>
+			<div className='input-wrapper'>
 				<div>
 					<input
 						className='custom-input'
 						value={email}
 						type='email'
+						autoFocus
 						placeholder='E-Mail...'
 						onChange={(e) => setEmail(e.target.value)}
 					></input>
@@ -99,7 +100,7 @@ const LoginForm = () => {
 							className='login-button'
 							onClick={() => setIsLoginMode(false)}
 						>
-							Зарегистрироваться
+							Создать аккаунт
 						</button>
 					</div>
 					: <div className='buttons-container'>
@@ -107,13 +108,13 @@ const LoginForm = () => {
 							className='login-button'
 							onClick={createUser}
 						>
-							Регистрация
+							Создать
 						</button>
 						<button
 							className='login-button'
 							onClick={() => setIsLoginMode(true)}
 						>
-							Авторизоваться
+							У меня есть аккаунт
 						</button>
 					</div>
 				}

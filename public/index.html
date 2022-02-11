@@ -13,15 +13,15 @@
 
 <body>
 	<script>
-		window.addEventListener('load', async () => {
-			if (navigator.serviceWorker) {
-				try {
-					const reg = await navigator.serviceWorker.register('/service-worker.js');
-				} catch (e) {
-					console.log('Service worker register fail. Reason:\n', e);
-				}
-			}
-		})
+		// window.addEventListener('load', async () => {
+		// 	if (navigator.serviceWorker) {
+		// 		try {
+		// 			const reg = await navigator.serviceWorker.register('/service-worker.js');
+		// 		} catch (e) {
+		// 			console.log('Service worker register fail. Reason:\n', e);
+		// 		}
+		// 	}
+		// })
 	</script>
 	<div id="root"></div>
 </body>

@@ -3,6 +3,7 @@
 .input-container {
 	position: relative;
 	margin-bottom: 5px;
+	width: 100%;
 }
 
 .filter-input {	

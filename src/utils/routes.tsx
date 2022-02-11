@@ -1,4 +1,5 @@
 import React, { lazy } from "react"
+import MedicationPage from "../pages/MedicationPage";
 import { AppRoutes } from "./enums"
 
 const DeseasesPage = lazy(() => import('../pages/DeseasesPage'));
@@ -40,7 +41,7 @@ export const publicRoutes: RouteParams[] = [
 	},
 	{
 		path: AppRoutes.MEDICATIONS_ROUTE + '/:id',
-		element: <MedicationsPage /> //TODO: add Medication page
+		element: <MedicationPage />
 	},
 	{
 		path: AppRoutes.DESEASES_ROUTE + '/:id',

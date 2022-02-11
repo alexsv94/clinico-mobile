@@ -17,20 +17,45 @@
 .modal {
 	padding: 25px;
 	border-radius: 10px;
-	background-color: whitesmoke;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	border: 1px solid var(--shadowColor);
+	animation: appear 0.3s ease-in-out;
+	max-width: 90%;
+}
+
+.modal div {
+	background-color: transparent;
 }
 
 .error-label {
-
+	background-color: transparent;
 }
 
 .button-container {
-
+	margin-top: 20px;
 }
 
 .confirm-button {
+	padding: 10px 30px;
+	background-color: var(--itemCardColor);
+	border: 1px solid var(--shadowColor);
+	border-radius: 8px;
+}
 
+.confirm-button:active {
+	background-color: var(--signatureColor);
+}
+
+@keyframes appear {
+	from {
+		transform: translateY(40px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0px);
+		opacity: 1;
+	}
 }
