@@ -31,7 +31,7 @@ $authHost.interceptors.request.use((config: AxiosRequestConfig) => {
 	const token = localStorage.getItem('auth_token');
 	if (config.headers) config.headers =  { 
 		'Authorization': token ? `Bearer ${token}` : '',
- 	};	 
+ 	};
 	return config;
 });
 

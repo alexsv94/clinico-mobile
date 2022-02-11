@@ -42,7 +42,7 @@ const MedicationPage = () => {
 				.then(result => setIsFavorite(result))
 				.finally(() => setIsLoading(false))
 		}
-	}, [id])
+	}, [])
 
 	if (isLoading) return (
 		<div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>

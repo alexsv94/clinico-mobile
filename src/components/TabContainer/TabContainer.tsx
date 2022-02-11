@@ -1,4 +1,6 @@
 import React, { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../utils/enums';
 import './TabContainer.css'
 
 interface TabContainerProps {
@@ -7,11 +9,22 @@ interface TabContainerProps {
 
 interface ITab {
 	title: string;
-	items: any[]
+	items: IFavoriteLink[]
+}
+
+export interface IFavoriteLink {
+	id: number;
+	name: string;
+	collectionRoute: AppRoutes;
+}
+
+function generateLink(item: IFavoriteLink): string {
+	return item.collectionRoute + '/' + item.id
 }
 
 const TabContainer: FC<TabContainerProps> = ({ tabs }) => {
 	const [activeTabIndex, setActiveTabIndex] = useState<number>(0)
+	const navigation = useNavigate();
 
 	return (
 		<div className='tab-container'>
@@ -21,16 +34,22 @@ const TabContainer: FC<TabContainerProps> = ({ tabs }) => {
 						key={tab.title}
 						className={`tab-base ${activeTabIndex === tabs.findIndex(t => t === tab) ? 'tab-active' : ''}`}
 						onClick={() => setActiveTabIndex(tabs.findIndex(t => t === tab))}
-						style={{width: `${100 / tabs.length}%`}}
+						style={{ width: `${100 / tabs.length}%` }}
 					>
 						{tab.title}
 					</div>
 				)}
 			</div>
 			<div className="tab-content">
-					{tabs[activeTabIndex].items.map(item =>
-						<div key={item.name} className='item-card'>{item.name}</div>
-					)}
+				{tabs[activeTabIndex].items.map(item =>
+					<div
+						key={item.name}
+						className='item-card'
+						onClick={() => navigation(generateLink(item))}
+					>
+						{item.name}
+					</div>
+				)}
 			</div>
 		</div>
 	);

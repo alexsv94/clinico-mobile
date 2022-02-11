@@ -1,3 +1,5 @@
+@import url('../../styles/deseasesPage.css');
+
 .tab-container {
 
 }
@@ -5,16 +7,22 @@
 .tab-header {
 	height: 65px;
 	display: flex;
+	margin-bottom: 5px;
 }
 
 .tab-content {
-	
+
 }
 
 .tab-base {
-
+	background-color: var(--infoIconColor);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--shadowColor);
+	border-radius: 5px;
 }
 
 .tab-active {
-
+	background-color: var(--iconColor);
 }

@@ -9,7 +9,7 @@
 	margin-bottom: 8px;
 }
 
-.parsed-container, ul, li, p, table, tbody, tr, th, td, strong {
+.parsed-container, ul, li, p, table, tbody, tr, th, td, strong, em {
 	background-color: transparent;
 }
 
