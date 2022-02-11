@@ -6,8 +6,6 @@ import { setTitle } from '../utils/functions';
 const ProfilePage = () => {
 	setTitle('Профиль');
 
-	//caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
-
 	const { user } = useContext(Context);
 
 	const [email, setEmail] = useState<string>('')
