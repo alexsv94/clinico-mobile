@@ -38,7 +38,7 @@ const FavoritesPage = () => {
 		<div className='page-container'>
 			<TabContainer tabs={[
 				{ title: 'Заболевания', items: generateFavoriteArray(AppRoutes.DESEASES_ROUTE, favoriteDeseases) },
-				{ title: 'Лек. препараты', items: generateFavoriteArray(AppRoutes.MEDICATIONS_ROUTE, favoriteMedications) }
+				{ title: 'Лек. препараты', items: generateFavoriteArray(AppRoutes.MEDICATIONS_ROUTE, favoriteMedications) },
 			]} />
 		</div>
 	);

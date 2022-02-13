@@ -18,6 +18,7 @@
 	padding: 10px;
 	font-size: 20px;
 	font-weight: 600;
+	user-select: none;
 }
 
 .custom-input {
@@ -33,6 +34,7 @@
 .custom-input:focus {
 	border-color: var(--shadowColor);
 	box-shadow: 0 0 15px var(--shadowColor);
+	outline: none;
 }
 
 .login-button {

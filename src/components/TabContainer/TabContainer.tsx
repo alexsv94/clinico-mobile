@@ -25,6 +25,7 @@ function generateLink(item: IFavoriteLink): string {
 const TabContainer: FC<TabContainerProps> = ({ tabs }) => {
 	const [activeTabIndex, setActiveTabIndex] = useState<number>(0)
 	const navigation = useNavigate();
+	console.log('TABS LENGTH: ' + tabs.length)
 
 	return (
 		<div className='tab-container'>
@@ -34,7 +35,7 @@ const TabContainer: FC<TabContainerProps> = ({ tabs }) => {
 						key={tab.title}
 						className={`tab-base ${activeTabIndex === tabs.findIndex(t => t === tab) ? 'tab-active' : ''}`}
 						onClick={() => setActiveTabIndex(tabs.findIndex(t => t === tab))}
-						style={{ width: `${100 / tabs.length}%` }}
+						style={{ width: `${(100 / tabs.length) - 1}%` }}
 					>
 						{tab.title}
 					</div>
